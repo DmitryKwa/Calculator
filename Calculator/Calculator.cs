@@ -18,6 +18,7 @@ namespace Calculator
         private void eraseButton_Click(object sender, EventArgs e)
         {
             if (resultWindow.Text.Length > 0) resultWindow.Text = resultWindow.Text[..^1].ToString();
+            calculatorUser.resultUser = false;
         }
 
         private void buttonNumberOne_Click(object sender, EventArgs e)
