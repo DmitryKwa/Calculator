@@ -25,6 +25,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "1";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -37,6 +38,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "2";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -49,6 +51,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "3";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -61,6 +64,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "4";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -73,6 +77,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "5";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -85,6 +90,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "6";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -97,6 +103,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "7";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -109,6 +116,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "8";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -121,6 +129,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "9";
+                calculatorUser.resultUser = false;
             }
             else
             {
@@ -133,6 +142,7 @@ namespace Calculator
             if (calculatorUser.resultUser)
             {
                 resultWindow.Text = "0";
+                calculatorUser.resultUser = false;
             }
             else
             {
