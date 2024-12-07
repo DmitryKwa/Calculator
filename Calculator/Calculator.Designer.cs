@@ -176,6 +176,7 @@
             resultButton.TabIndex = 12;
             resultButton.Text = "Result";
             resultButton.UseVisualStyleBackColor = true;
+            resultButton.Click += resultButton_Click;
             // 
             // buttonNumberNull
             // 

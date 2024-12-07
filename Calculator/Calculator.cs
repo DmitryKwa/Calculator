@@ -1,7 +1,10 @@
+using System.Data;
+
 namespace Calculator
 {
     public partial class Calculator : Form
     {
+        Count calculatorUser = new Count();
         public Calculator()
         {
             InitializeComponent();
@@ -71,17 +74,7 @@ namespace Calculator
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(resultWindow.Text))
-                {
-                    if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
-                    {
-                        resultWindow.Text = resultWindow.Text[..^1].ToString() + "+";
-                    }
-                    else
-                    {
-                        resultWindow.Text += "+";
-                    }
-                }
+                actionButton('+');
             }
             catch { }
         }
@@ -90,17 +83,7 @@ namespace Calculator
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(resultWindow.Text))
-                {
-                    if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
-                    {
-                        resultWindow.Text = resultWindow.Text[..^1].ToString() + "-";
-                    }
-                    else
-                    {
-                        resultWindow.Text += "-";
-                    }
-                }
+                actionButton('-');
             }
             catch { }
         }
@@ -109,17 +92,7 @@ namespace Calculator
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(resultWindow.Text))
-                {
-                    if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
-                    {
-                        resultWindow.Text = resultWindow.Text[..^1].ToString() + "*";
-                    }
-                    else
-                    {
-                        resultWindow.Text += "*";
-                    }
-                }
+                actionButton('*');
             }
             catch { }
         }
@@ -128,19 +101,35 @@ namespace Calculator
         {
             try
             {
+                actionButton('/');
+            }
+            catch { }
+        }
+
+        public void actionButton(char c)
+        {
+            try
+            {
                 if (!string.IsNullOrWhiteSpace(resultWindow.Text))
                 {
                     if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
                     {
-                        resultWindow.Text = resultWindow.Text[..^1].ToString() + "/";
+                        resultWindow.Text = resultWindow.Text[..^1].ToString() + c;
                     }
                     else
                     {
-                        resultWindow.Text += "/";
+                        resultWindow.Text += c;
                     }
                 }
             }
             catch { }
+        }
+
+        private void resultButton_Click(object sender, EventArgs e)
+        {
+            string str = resultWindow.Text;
+            calculatorUser.CalculateMethod(ref str);
+            resultWindow.Text = str;
         }
     }
 }
