@@ -126,7 +126,28 @@ namespace Calculator
 
         private void divisionButton_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "/";
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(resultWindow.Text))
+                {
+                    if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
+                    {
+                        if (resultWindow.Text[^2] == '+' || resultWindow.Text[^2] == '-' || resultWindow.Text[^2] == '*' || resultWindow.Text[^2] == '/')
+                        {
+                            resultWindow.Text = resultWindow.Text[..^2].ToString() + "/";
+                        }
+                        else
+                        {
+                            resultWindow.Text = resultWindow.Text[..^1].ToString() + "/";
+                        }
+                    }
+                    else
+                    {
+                        resultWindow.Text += "/";
+                    }
+                }
+            }
+            catch { }
         }
     }
 }
