@@ -195,6 +195,7 @@
             additionButton.TabIndex = 14;
             additionButton.Text = "+";
             additionButton.UseVisualStyleBackColor = true;
+            additionButton.Click += additionButton_Click;
             // 
             // subtractionButton
             // 
@@ -204,6 +205,7 @@
             subtractionButton.TabIndex = 15;
             subtractionButton.Text = "-";
             subtractionButton.UseVisualStyleBackColor = true;
+            subtractionButton.Click += subtractionButton_Click;
             // 
             // multiplicationButton
             // 
@@ -213,6 +215,7 @@
             multiplicationButton.TabIndex = 16;
             multiplicationButton.Text = "*";
             multiplicationButton.UseVisualStyleBackColor = true;
+            multiplicationButton.Click += multiplicationButton_Click;
             // 
             // divisionButton
             // 
@@ -222,6 +225,7 @@
             divisionButton.TabIndex = 17;
             divisionButton.Text = "/";
             divisionButton.UseVisualStyleBackColor = true;
+            divisionButton.Click += divisionButton_Click;
             // 
             // Calculator
             // 
