@@ -19,8 +19,13 @@ namespace Calculator
                 {
                     str = str[..^1];
                 }
+                str = str.Replace(',', '.');
+
                 DataTable dataTable = new DataTable();
                 str = dataTable.Compute(str, null).ToString();
+                double db = double.Parse(str);
+                db = Math.Round(db, 4);
+                str = db.ToString();
                 resultUser = true;
             }
         }

@@ -22,132 +22,52 @@ namespace Calculator
 
         private void buttonNumberOne_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "1";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "1";
-            }
+            numberButton('1');
         }
 
         private void buttonNumberTwo_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "2";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "2";
-            }
+            numberButton('2');
         }
 
         private void buttonNumberThree_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "3";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "3";
-            }
+            numberButton('3');
         }
 
         private void buttonNumberFour_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "4";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "4";
-            }
+            numberButton('4');
         }
 
         private void buttonNumberFive_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "5";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "5";
-            }
+            numberButton('5');
         }
 
         private void buttonNumberSix_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "6";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "6";
-            }
+            numberButton('6');
         }
 
         private void buttonNumberSeven_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "7";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "7";
-            }
+            numberButton('7');
         }
 
         private void buttonNumberEight_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "8";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "8";
-            }
+            numberButton('8');
         }
 
         private void buttonNumberNine_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "9";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "9";
-            }
+            numberButton('9');
         }
 
         private void buttonNumberNull_Click(object sender, EventArgs e)
         {
-            if (calculatorUser.resultUser)
-            {
-                resultWindow.Text = "0";
-                calculatorUser.resultUser = false;
-            }
-            else
-            {
-                resultWindow.Text += "0";
-            }
+            numberButton('0');
         }
 
         private void additionButton_Click(object sender, EventArgs e)
@@ -186,12 +106,14 @@ namespace Calculator
             catch { }
         }
 
-        public void actionButton(char c)
+        private void actionButton(char c)
         {
             try
             {
                 if (!string.IsNullOrWhiteSpace(resultWindow.Text))
                 {
+                    if(calculatorUser.resultUser) calculatorUser.resultUser = false;
+
                     if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
                     {
                         resultWindow.Text = resultWindow.Text[..^1].ToString() + c;
@@ -200,6 +122,23 @@ namespace Calculator
                     {
                         resultWindow.Text += c;
                     }
+                }
+            }
+            catch { }
+        }
+
+        private void numberButton(char c)
+        {
+            try
+            {
+                if (calculatorUser.resultUser)
+                {
+                    resultWindow.Text = c.ToString();
+                    calculatorUser.resultUser = false;
+                }
+                else
+                {
+                    resultWindow.Text += c;
                 }
             }
             catch { }
