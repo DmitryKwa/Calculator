@@ -22,52 +22,122 @@ namespace Calculator
 
         private void buttonNumberOne_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "1";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "1";
+            }
+            else
+            {
+                resultWindow.Text += "1";
+            }
         }
 
         private void buttonNumberTwo_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "2";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "2";
+            }
+            else
+            {
+                resultWindow.Text += "2";
+            }
         }
 
         private void buttonNumberThree_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "3";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "3";
+            }
+            else
+            {
+                resultWindow.Text += "3";
+            }
         }
 
         private void buttonNumberFour_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "4";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "4";
+            }
+            else
+            {
+                resultWindow.Text += "4";
+            }
         }
 
         private void buttonNumberFive_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "5";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "5";
+            }
+            else
+            {
+                resultWindow.Text += "5";
+            }
         }
 
         private void buttonNumberSix_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "6";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "6";
+            }
+            else
+            {
+                resultWindow.Text += "6";
+            }
         }
 
         private void buttonNumberSeven_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "7";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "7";
+            }
+            else
+            {
+                resultWindow.Text += "7";
+            }
         }
 
         private void buttonNumberEight_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "8";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "8";
+            }
+            else
+            {
+                resultWindow.Text += "8";
+            }
         }
 
         private void buttonNumberNine_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "9";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "9";
+            }
+            else
+            {
+                resultWindow.Text += "9";
+            }
         }
 
         private void buttonNumberNull_Click(object sender, EventArgs e)
         {
-            resultWindow.Text += "0";
+            if (calculatorUser.resultUser)
+            {
+                resultWindow.Text = "0";
+            }
+            else
+            {
+                resultWindow.Text += "0";
+            }
         }
 
         private void additionButton_Click(object sender, EventArgs e)
