@@ -9,20 +9,30 @@ namespace Calculator
         {
             InitializeComponent();
 
+            calculatorUser.resultUser = true;
+            resultWindow.Text = "0";
             windowLabel.Text = "";
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            resultWindow.Clear();
+            resultWindow.Text = "0";
             windowLabel.Text = "";
+
+            calculatorUser.resultUser = true;
         }
 
         private void eraseButton_Click(object sender, EventArgs e)
         {
-            if (resultWindow.Text.Length > 0) 
+            if (resultWindow.Text.Length > 0)
                 resultWindow.Text = resultWindow.Text[..^1].ToString();
             calculatorUser.resultUser = false;
+
+            if (resultWindow.TextLength == 0)
+            {
+                resultWindow.Text = "0";
+                calculatorUser.resultUser = true;
+            }
         }
 
         private void buttonNumberOne_Click(object sender, EventArgs e)
@@ -111,6 +121,15 @@ namespace Calculator
             catch { }
         }
 
+        private void buttonComma_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                comma();
+            }
+            catch { }
+        }
+
         private void actionButton(char c)
         {
             try
@@ -161,6 +180,25 @@ namespace Calculator
                 }
             }
             catch { }
+        }
+
+        private void comma()
+        {
+            try
+            {
+                char[] c = { '+', '-', '*', '/' };
+
+                if (resultWindow.Text[^1] != ',' && resultWindow.Text[^1] != '+' && resultWindow.Text[^1] != '-' && resultWindow.Text[^1] != '*' && resultWindow.Text[^1] != '/')
+                {
+                    string[] str = resultWindow.Text.Split(c);
+
+                    if(!str[str.Length - 1].Contains(','))
+                    {
+                        resultWindow.Text += ',';
+                    }
+                }
+            }
+            catch (Exception ex) { _ = MessageBox.Show(ex.Message); }
         }
 
         private void resultButton_Click(object sender, EventArgs e)

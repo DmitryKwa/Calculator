@@ -47,6 +47,7 @@
             multiplicationButton = new Button();
             divisionButton = new Button();
             windowLabel = new Label();
+            buttonComma = new Button();
             SuspendLayout();
             // 
             // resultWindow
@@ -113,7 +114,7 @@
             // 
             // buttonNumberFour
             // 
-            buttonNumberFour.Location = new Point(176, 250);
+            buttonNumberFour.Location = new Point(174, 250);
             buttonNumberFour.Name = "buttonNumberFour";
             buttonNumberFour.Size = new Size(75, 75);
             buttonNumberFour.TabIndex = 4;
@@ -123,7 +124,7 @@
             // 
             // buttonNumberNine
             // 
-            buttonNumberNine.Location = new Point(176, 331);
+            buttonNumberNine.Location = new Point(174, 331);
             buttonNumberNine.Name = "buttonNumberNine";
             buttonNumberNine.Size = new Size(75, 75);
             buttonNumberNine.TabIndex = 9;
@@ -173,9 +174,9 @@
             // 
             // resultButton
             // 
-            resultButton.Location = new Point(93, 412);
+            resultButton.Location = new Point(174, 412);
             resultButton.Name = "resultButton";
-            resultButton.Size = new Size(239, 75);
+            resultButton.Size = new Size(158, 75);
             resultButton.TabIndex = 11;
             resultButton.Text = "Result";
             resultButton.UseVisualStyleBackColor = true;
@@ -240,11 +241,22 @@
             windowLabel.TabIndex = 18;
             windowLabel.Text = "label1";
             // 
+            // buttonComma
+            // 
+            buttonComma.Location = new Point(93, 412);
+            buttonComma.Name = "buttonComma";
+            buttonComma.Size = new Size(75, 75);
+            buttonComma.TabIndex = 19;
+            buttonComma.Text = ",";
+            buttonComma.UseVisualStyleBackColor = true;
+            buttonComma.Click += buttonComma_Click;
+            // 
             // Calculator
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(382, 536);
+            Controls.Add(buttonComma);
             Controls.Add(windowLabel);
             Controls.Add(divisionButton);
             Controls.Add(multiplicationButton);
@@ -294,5 +306,6 @@
         private Button multiplicationButton;
         private Button divisionButton;
         private Label windowLabel;
+        private Button buttonComma;
     }
 }

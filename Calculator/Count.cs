@@ -14,37 +14,41 @@ namespace Calculator
 
         public void CalculateMethod(ref string str)
         {
-            if (!string.IsNullOrWhiteSpace(str))
+            try
             {
-                if (str[^1] == '+' || str[^1] == '-' || str[^1] == '*' || str[^1] == '/')
+                if (!string.IsNullOrWhiteSpace(str))
                 {
-                    if (str[^2] == '+' || str[^2] == '-' || str[^2] == '*' || str[^2] == '/')
+                    if (str[^1] == '+' || str[^1] == '-' || str[^1] == '*' || str[^1] == '/')
                     {
-                        str = str[..^2];
+                        if (str[^2] == '+' || str[^2] == '-' || str[^2] == '*' || str[^2] == '/')
+                        {
+                            str = str[..^2];
+                        }
+                        else
+                        {
+                            str = str[..^1];
+                        }
+                    }
+                    str = str.Replace(',', '.');
+
+                    DataTable dataTable = new DataTable();
+                    str = dataTable.Compute(str, null).ToString();
+                    double db = double.Parse(str);
+
+                    if (double.IsInfinity(db))
+                    {
+                        str = "Деление на ноль!";
                     }
                     else
                     {
-                        str = str[..^1];
+                        db = Math.Round(db, 10);
+                        str = db.ToString();
                     }
-                }
-                str = str.Replace(',', '.');
 
-                DataTable dataTable = new DataTable();
-                str = dataTable.Compute(str, null).ToString();
-                double db = double.Parse(str);
-
-                if (double.IsInfinity(db))
-                {
-                    str = "Деление на ноль!";
+                    resultUser = true;
                 }
-                else
-                {
-                    db = Math.Round(db, 4);
-                    str = db.ToString();
-                }
-
-                resultUser = true;
             }
+            catch (Exception ex) { _ = MessageBox.Show(ex.Message,"Ошибка!"); }
         }
     }
 }
