@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -17,15 +18,31 @@ namespace Calculator
             {
                 if (str[^1] == '+' || str[^1] == '-' || str[^1] == '*' || str[^1] == '/')
                 {
-                    str = str[..^1];
+                    if (str[^2] == '+' || str[^2] == '-' || str[^2] == '*' || str[^2] == '/')
+                    {
+                        str = str[..^2];
+                    }
+                    else
+                    {
+                        str = str[..^1];
+                    }
                 }
                 str = str.Replace(',', '.');
 
                 DataTable dataTable = new DataTable();
                 str = dataTable.Compute(str, null).ToString();
                 double db = double.Parse(str);
-                db = Math.Round(db, 4);
-                str = db.ToString();
+
+                if (double.IsInfinity(db))
+                {
+                    str = "Деление на ноль!";
+                }
+                else
+                {
+                    db = Math.Round(db, 4);
+                    str = db.ToString();
+                }
+
                 resultUser = true;
             }
         }

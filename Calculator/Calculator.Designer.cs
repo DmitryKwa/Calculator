@@ -46,6 +46,7 @@
             subtractionButton = new Button();
             multiplicationButton = new Button();
             divisionButton = new Button();
+            windowLabel = new Label();
             SuspendLayout();
             // 
             // resultWindow
@@ -55,8 +56,10 @@
             resultWindow.Multiline = true;
             resultWindow.Name = "resultWindow";
             resultWindow.ReadOnly = true;
+            resultWindow.RightToLeft = RightToLeft.No;
             resultWindow.Size = new Size(320, 70);
             resultWindow.TabIndex = 0;
+            resultWindow.TextAlign = HorizontalAlignment.Right;
             // 
             // buttonNumberOne
             // 
@@ -93,7 +96,7 @@
             buttonNumberSix.Location = new Point(12, 250);
             buttonNumberSix.Name = "buttonNumberSix";
             buttonNumberSix.Size = new Size(75, 75);
-            buttonNumberSix.TabIndex = 4;
+            buttonNumberSix.TabIndex = 6;
             buttonNumberSix.Text = "6";
             buttonNumberSix.UseVisualStyleBackColor = true;
             buttonNumberSix.Click += buttonNumberSix_Click;
@@ -113,7 +116,7 @@
             buttonNumberFour.Location = new Point(176, 250);
             buttonNumberFour.Name = "buttonNumberFour";
             buttonNumberFour.Size = new Size(75, 75);
-            buttonNumberFour.TabIndex = 6;
+            buttonNumberFour.TabIndex = 4;
             buttonNumberFour.Text = "4";
             buttonNumberFour.UseVisualStyleBackColor = true;
             buttonNumberFour.Click += buttonNumberFour_Click;
@@ -123,7 +126,7 @@
             buttonNumberNine.Location = new Point(176, 331);
             buttonNumberNine.Name = "buttonNumberNine";
             buttonNumberNine.Size = new Size(75, 75);
-            buttonNumberNine.TabIndex = 7;
+            buttonNumberNine.TabIndex = 9;
             buttonNumberNine.Text = "9";
             buttonNumberNine.UseVisualStyleBackColor = true;
             buttonNumberNine.Click += buttonNumberNine_Click;
@@ -143,7 +146,7 @@
             buttonNumberSeven.Location = new Point(12, 331);
             buttonNumberSeven.Name = "buttonNumberSeven";
             buttonNumberSeven.Size = new Size(75, 75);
-            buttonNumberSeven.TabIndex = 9;
+            buttonNumberSeven.TabIndex = 7;
             buttonNumberSeven.Text = "7";
             buttonNumberSeven.UseVisualStyleBackColor = true;
             buttonNumberSeven.Click += buttonNumberSeven_Click;
@@ -153,7 +156,7 @@
             clearButton.Location = new Point(12, 88);
             clearButton.Name = "clearButton";
             clearButton.Size = new Size(75, 75);
-            clearButton.TabIndex = 10;
+            clearButton.TabIndex = 17;
             clearButton.Text = "C";
             clearButton.UseVisualStyleBackColor = true;
             clearButton.Click += clearButton_Click;
@@ -163,7 +166,7 @@
             eraseButton.Location = new Point(93, 88);
             eraseButton.Name = "eraseButton";
             eraseButton.Size = new Size(156, 75);
-            eraseButton.TabIndex = 11;
+            eraseButton.TabIndex = 16;
             eraseButton.Text = ">";
             eraseButton.UseVisualStyleBackColor = true;
             eraseButton.Click += eraseButton_Click;
@@ -173,7 +176,7 @@
             resultButton.Location = new Point(93, 412);
             resultButton.Name = "resultButton";
             resultButton.Size = new Size(239, 75);
-            resultButton.TabIndex = 12;
+            resultButton.TabIndex = 11;
             resultButton.Text = "Result";
             resultButton.UseVisualStyleBackColor = true;
             resultButton.Click += resultButton_Click;
@@ -183,7 +186,7 @@
             buttonNumberNull.Location = new Point(12, 412);
             buttonNumberNull.Name = "buttonNumberNull";
             buttonNumberNull.Size = new Size(75, 75);
-            buttonNumberNull.TabIndex = 13;
+            buttonNumberNull.TabIndex = 10;
             buttonNumberNull.Text = "0";
             buttonNumberNull.UseVisualStyleBackColor = true;
             buttonNumberNull.Click += buttonNumberNull_Click;
@@ -193,7 +196,7 @@
             additionButton.Location = new Point(257, 331);
             additionButton.Name = "additionButton";
             additionButton.Size = new Size(75, 75);
-            additionButton.TabIndex = 14;
+            additionButton.TabIndex = 15;
             additionButton.Text = "+";
             additionButton.UseVisualStyleBackColor = true;
             additionButton.Click += additionButton_Click;
@@ -203,7 +206,7 @@
             subtractionButton.Location = new Point(257, 250);
             subtractionButton.Name = "subtractionButton";
             subtractionButton.Size = new Size(75, 75);
-            subtractionButton.TabIndex = 15;
+            subtractionButton.TabIndex = 14;
             subtractionButton.Text = "-";
             subtractionButton.UseVisualStyleBackColor = true;
             subtractionButton.Click += subtractionButton_Click;
@@ -213,7 +216,7 @@
             multiplicationButton.Location = new Point(257, 169);
             multiplicationButton.Name = "multiplicationButton";
             multiplicationButton.Size = new Size(75, 75);
-            multiplicationButton.TabIndex = 16;
+            multiplicationButton.TabIndex = 13;
             multiplicationButton.Text = "*";
             multiplicationButton.UseVisualStyleBackColor = true;
             multiplicationButton.Click += multiplicationButton_Click;
@@ -223,16 +226,26 @@
             divisionButton.Location = new Point(257, 88);
             divisionButton.Name = "divisionButton";
             divisionButton.Size = new Size(75, 75);
-            divisionButton.TabIndex = 17;
+            divisionButton.TabIndex = 12;
             divisionButton.Text = "/";
             divisionButton.UseVisualStyleBackColor = true;
             divisionButton.Click += divisionButton_Click;
+            // 
+            // windowLabel
+            // 
+            windowLabel.AutoSize = true;
+            windowLabel.Location = new Point(12, 38);
+            windowLabel.Name = "windowLabel";
+            windowLabel.Size = new Size(50, 20);
+            windowLabel.TabIndex = 18;
+            windowLabel.Text = "label1";
             // 
             // Calculator
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(382, 536);
+            Controls.Add(windowLabel);
             Controls.Add(divisionButton);
             Controls.Add(multiplicationButton);
             Controls.Add(subtractionButton);
@@ -280,5 +293,6 @@
         private Button subtractionButton;
         private Button multiplicationButton;
         private Button divisionButton;
+        private Label windowLabel;
     }
 }

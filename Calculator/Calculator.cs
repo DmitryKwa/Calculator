@@ -8,16 +8,20 @@ namespace Calculator
         public Calculator()
         {
             InitializeComponent();
+
+            windowLabel.Text = "";
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
             resultWindow.Clear();
+            windowLabel.Text = "";
         }
 
         private void eraseButton_Click(object sender, EventArgs e)
         {
-            if (resultWindow.Text.Length > 0) resultWindow.Text = resultWindow.Text[..^1].ToString();
+            if (resultWindow.Text.Length > 0) 
+                resultWindow.Text = resultWindow.Text[..^1].ToString();
             calculatorUser.resultUser = false;
         }
 
@@ -111,13 +115,27 @@ namespace Calculator
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(resultWindow.Text))
+                if (!string.IsNullOrWhiteSpace(resultWindow.Text) && resultWindow.Text != "Деление на ноль!")
                 {
-                    if(calculatorUser.resultUser) calculatorUser.resultUser = false;
+                    if (calculatorUser.resultUser) calculatorUser.resultUser = false;
 
-                    if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
+                    if ((resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '/') && c == '-')
                     {
-                        resultWindow.Text = resultWindow.Text[..^1].ToString() + c;
+                        if (resultWindow.Text[^2] != '+' && resultWindow.Text[^2] != '*' && resultWindow.Text[^2] != '-' && resultWindow.Text[^2] != '/')
+                        {
+                            resultWindow.Text += c;
+                        }
+                    }
+                    else if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
+                    {
+                        if (resultWindow.Text[^2] == '+' || resultWindow.Text[^2] == '-' || resultWindow.Text[^2] == '*' || resultWindow.Text[^2] == '/')
+                        {
+                            resultWindow.Text = resultWindow.Text[..^2].ToString() + c;
+                        }
+                        else
+                        {
+                            resultWindow.Text = resultWindow.Text[..^1].ToString() + c;
+                        }
                     }
                     else
                     {
@@ -148,6 +166,7 @@ namespace Calculator
         private void resultButton_Click(object sender, EventArgs e)
         {
             string str = resultWindow.Text;
+            windowLabel.Text = str;
             calculatorUser.CalculateMethod(ref str);
             resultWindow.Text = str;
         }
