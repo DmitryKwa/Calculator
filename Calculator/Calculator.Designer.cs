@@ -48,6 +48,8 @@
             divisionButton = new Button();
             windowLabel = new Label();
             buttonComma = new Button();
+            buttonRaisingToAPower = new Button();
+            RootExtraction = new Button();
             SuspendLayout();
             // 
             // resultWindow
@@ -251,11 +253,33 @@
             buttonComma.UseVisualStyleBackColor = true;
             buttonComma.Click += buttonComma_Click;
             // 
+            // buttonRaisingToAPower
+            // 
+            buttonRaisingToAPower.Location = new Point(371, 88);
+            buttonRaisingToAPower.Name = "buttonRaisingToAPower";
+            buttonRaisingToAPower.Size = new Size(75, 75);
+            buttonRaisingToAPower.TabIndex = 20;
+            buttonRaisingToAPower.Text = "^";
+            buttonRaisingToAPower.UseVisualStyleBackColor = true;
+            buttonRaisingToAPower.Click += buttonRaisingToAPower_Click;
+            // 
+            // RootExtraction
+            // 
+            RootExtraction.Location = new Point(452, 88);
+            RootExtraction.Name = "RootExtraction";
+            RootExtraction.Size = new Size(75, 75);
+            RootExtraction.TabIndex = 21;
+            RootExtraction.Text = "√";
+            RootExtraction.UseVisualStyleBackColor = true;
+            RootExtraction.Click += RootExtraction_Click;
+            // 
             // Calculator
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(382, 536);
+            ClientSize = new Size(691, 536);
+            Controls.Add(RootExtraction);
+            Controls.Add(buttonRaisingToAPower);
             Controls.Add(buttonComma);
             Controls.Add(windowLabel);
             Controls.Add(divisionButton);
@@ -307,5 +331,7 @@
         private Button divisionButton;
         private Label windowLabel;
         private Button buttonComma;
+        private Button buttonRaisingToAPower;
+        private Button RootExtraction;
     }
 }

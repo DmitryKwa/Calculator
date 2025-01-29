@@ -1,4 +1,5 @@
-using System.Data;
+﻿using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Calculator
 {
@@ -134,31 +135,63 @@ namespace Calculator
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(resultWindow.Text) && resultWindow.Text != "������� �� ����!")
+                if (!string.IsNullOrWhiteSpace(resultWindow.Text) && resultWindow.Text != "Деление на ноль!" && resultWindow.Text != "Не определено!")
                 {
                     if (calculatorUser.resultUser) calculatorUser.resultUser = false;
 
-                    if ((resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '/') && c == '-')
+                    if (c == '-' && resultWindow.Text == "0") { resultWindow.Text = c.ToString(); calculatorUser.resultUser = false; }
+
+                    if (c != '√')
                     {
-                        if (resultWindow.Text[^2] != '+' && resultWindow.Text[^2] != '*' && resultWindow.Text[^2] != '-' && resultWindow.Text[^2] != '/')
+                        if (resultWindow.Text[^1] == '√' && (c == '+' || c == '*' || c == '/' || c == '^'))
+                        {
+
+                        }
+                        else if ((resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '/' || resultWindow.Text[^1] == '^') && c == '-')
+                        {
+                            if (resultWindow.Text[^2] != '+' && resultWindow.Text[^2] != '*' && resultWindow.Text[^2] != '-' && resultWindow.Text[^2] != '/' && resultWindow.Text[^2] == '^')
+                            {
+                                resultWindow.Text += c;
+                            }
+                        }
+                        else if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/' || resultWindow.Text[^1] == '^')
+                        {
+                            if (resultWindow.Text[^2] == '+' || resultWindow.Text[^2] == '-' || resultWindow.Text[^2] == '*' || resultWindow.Text[^2] == '/' || resultWindow.Text[^2] == '^')
+                            {
+                                resultWindow.Text = resultWindow.Text[..^2].ToString() + c;
+                            }
+                            else
+                            {
+                                resultWindow.Text = resultWindow.Text[..^1].ToString() + c;
+                            }
+                        }
+                        else
                         {
                             resultWindow.Text += c;
                         }
                     }
-                    else if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '/')
+                    else
                     {
-                        if (resultWindow.Text[^2] == '+' || resultWindow.Text[^2] == '-' || resultWindow.Text[^2] == '*' || resultWindow.Text[^2] == '/')
+                        if (resultWindow.Text.Length == 1 && resultWindow.Text[^1] == '0')
                         {
-                            resultWindow.Text = resultWindow.Text[..^2].ToString() + c;
+                            resultWindow.Text = "√";
                         }
                         else
                         {
-                            resultWindow.Text = resultWindow.Text[..^1].ToString() + c;
+                            if (resultWindow.Text[^1] == '+' || resultWindow.Text[^1] == '*' || resultWindow.Text[^1] == '-' || resultWindow.Text[^1] == '/' || resultWindow.Text[^1] == '^' || resultWindow.Text[^1] == '√')
+                            {
+                                if (resultWindow.Text[^2] == '+' || resultWindow.Text[^2] == '-' || resultWindow.Text[^2] == '*' || resultWindow.Text[^2] == '/' || resultWindow.Text[^2] == '^')
+                                {
+                                    resultWindow.Text = resultWindow.Text[..^1].ToString() + "√";
+                                }
+                                else
+                                {
+                                    resultWindow.Text += "√";
+                                }
+                            }
+                            else
+                                resultWindow.Text += "*√";
                         }
-                    }
-                    else
-                    {
-                        resultWindow.Text += c;
                     }
                 }
             }
@@ -192,7 +225,7 @@ namespace Calculator
                 {
                     string[] str = resultWindow.Text.Split(c);
 
-                    if(!str[str.Length - 1].Contains(','))
+                    if (!str[str.Length - 1].Contains(','))
                     {
                         resultWindow.Text += ',';
                     }
@@ -207,6 +240,38 @@ namespace Calculator
             windowLabel.Text = str;
             calculatorUser.CalculateMethod(ref str);
             resultWindow.Text = str;
+        }
+
+        private void buttonRaisingToAPower_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                char[] c = { '+', '-', '*', '/' };
+
+                string[] str = resultWindow.Text.Split(c);
+
+                if (str[str.Length - 1].Split('^').Length <= 2)
+                {
+                    actionButton('^');
+                }
+            }
+            catch { }
+        }
+
+        private void RootExtraction_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                char[] c = { '+', '-', '*', '/' };
+
+                string[] str = resultWindow.Text.Split(c);
+
+                if (Regex.Replace(str[str.Length - 1], "[0-9]", "", RegexOptions.IgnoreCase).Length <= 2)
+                {
+                    actionButton('√');
+                }
+            }
+            catch { }
         }
     }
 }
